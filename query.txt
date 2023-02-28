@@ -1,0 +1,152 @@
+QEURY LISTS
+
+1. Risk Assessment Details by Category
+i. Climate
+MATCH(a:RISKSOURCE{Name:"Climate"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+ii. Land
+MATCH(a:RISKSOURCE{Name:"Land"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+iii. Traffic and Transport
+MATCH(a:RISKSOURCE{Name:"Traffic and Transport"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+iv. Non-Transport Infrasturcture
+MATCH(a:RISKSOURCE{Name:"Non-transport infrastructure"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+v. Waste
+MATCH(a:RISKSOURCE{Name:"Waste"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+vi. Water Resources
+MATCH(a:RISKSOURCE{Name:"Water Resources"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+vii. Coastal Resources
+MATCH(a:RISKSOURCE{Name:"Coastal Resources"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+viii. Air
+MATCH(a:RISKSOURCE{Name:"Air"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+
+ix. Noise and Vibration
+MATCH(a:RISKSOURCE{Name:"Noise and Vibration"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+x. Nature Conservation
+MATCH(a:RISKSOURCE{Name:"Nature Conservation"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+xi. Cultural Heritage
+MATCH(a:RISKSOURCE{Name:"Cultural Heritage"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+xii. Social
+MATCH(a:RISKSOURCE{Name:"Social"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating 
+
+xiii. Health and Safety
+MATCH(a:RISKSOURCE{Name:"Health and Safety"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+xiv. Economy
+MATCH(a:RISKSOURCE{Name:"Economy"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+xv. Construction Methodology
+MATCH(a:RISKSOURCE{Name:"Construction Methodology"})-[:hasRisk]->(n:RISK)-[:hasRiskRating]->(m:RISKRATING) 
+RETURN a.Name AS Risk_Category, n.Name AS Risk_Code, n.Description AS Risk_Name, m.Probability As Risk_Probability, 
+m.Impact AS Risk_Impact,m.Rating AS Risk_Rating  
+
+
+2. Risk Treatment
+
+a. Extreme risks
+
+MATCH(a:RISKSOURCE)-[:hasRisk]->(b:RISK)
+MATCH(b)-[:hasRiskRating]->(c:RISKRATING {Rating:"Extreme"})
+MATCH(b)-[:hasRiskConsequence]->(d:RISKCONSEQUENCE)
+MATCH(b)-[:hasRiskMitigation]->(e:RISKMITIGATION)
+RETURN a.Name AS Risk_Risk, b.Name AS Risk_Code, b.Description AS Risk_Name, c.Rating As Risk_Rating, 
+d.Description AS Risk_Consequence,e.Description AS Risk_Mitigation
+
+b. High risks
+
+MATCH(a:RISKSOURCE)-[:hasRisk]->(b:RISK)
+MATCH(b)-[:hasRiskRating]->(c:RISKRATING {Rating:"High"})
+MATCH(b)-[:hasRiskConsequence]->(d:RISKCONSEQUENCE)
+MATCH(b)-[:hasRiskMitigation]->(e:RISKMITIGATION)
+RETURN a.Name AS Risk_Risk, b.Name AS Risk_Code, b.Description AS Risk_Name, c.Rating As Risk_Rating, 
+d.Description AS Risk_Consequence,e.Description AS Risk_Mitigation
+
+c. Moderate risks
+
+MATCH(a:RISKSOURCE)-[:hasRisk]->(b:RISK)
+MATCH(b)-[:hasRiskRating]->(c:RISKRATING {Rating:"Moderate"})
+MATCH(b)-[:hasRiskConsequence]->(d:RISKCONSEQUENCE)
+MATCH(b)-[:hasRiskMitigation]->(e:RISKMITIGATION)
+RETURN a.Name AS Risk_Risk, b.Name AS Risk_Code, b.Description AS Risk_Name, c.Rating As Risk_Rating, 
+d.Description AS Risk_Consequence,e.Description AS Risk_Mitigation
+
+d. Low risks
+
+MATCH(a:RISKSOURCE)-[:hasRisk]->(b:RISK)
+MATCH(b)-[:hasRiskRating]->(c:RISKRATING {Rating:"Low"})
+MATCH(b)-[:hasRiskConsequence]->(d:RISKCONSEQUENCE)
+MATCH(b)-[:hasRiskMitigation]->(e:RISKMITIGATION)
+RETURN a.Name AS Risk_Risk, b.Name AS Risk_Code, b.Description AS Risk_Name, c.Rating As Risk_Rating, 
+d.Description AS Risk_Consequence,e.Description AS Risk_Mitigation
+
+
+e. Negligible risks
+
+MATCH(a:RISKSOURCE)-[:hasRisk]->(b:RISK)
+MATCH(b)-[:hasRiskRating]->(c:RISKRATING {Rating:"Negligible"})
+MATCH(b)-[:hasRiskConsequence]->(d:RISKCONSEQUENCE)
+MATCH(b)-[:hasRiskMitigation]->(e:RISKMITIGATION)
+RETURN a.Name AS Risk_Risk, b.Name AS Risk_Code, b.Description AS Risk_Name, c.Rating As Risk_Rating, 
+d.Description AS Risk_Consequence,e.Description AS Risk_Mitigation
+
+
+
+import streamlit as st
+import pandas as pd
+
+driver = connect_to_neo4j('bolt://localhost:7687', 'neo4j', 'password')
+
+# Define the options for the selectbox
+query_options = {
+    'Query 1: Get all nodes with the "Person" label and their name and age properties': 'MATCH (n:Person) RETURN n.name AS name, n.age AS age',
+    'Query 2: Get all nodes with the "Movie" label and their title and release year properties': 'MATCH (m:Movie) RETURN m.title AS title, m.released AS released',
+    'Query 3: Get all nodes with the "Person" label and their relationships to nodes with the "Movie" label': 'MATCH (p:Person)-[r]->(m:Movie) RETURN p.name AS person, type(r) AS relationship, m.title AS movie',
+    'Query 4: Get the shortest path between two nodes with the "Person" label': 'MATCH (p1:Person{name: "Alice"}), (p2:Person{name: "Bob"}), p = shortestPath((p1)-[*]-(p2)) RETURN p',
+    'Query 5: Get the number of nodes and relationships in the entire database': 'MATCH (n) RETURN count(n) AS nodes, size((n)--()) AS relationships'
+}
+
+# Prompt the user to select a query
+selected_query = st.selectbox('Select a query', options=list(query_options.keys()))
+
+# Run the selected query
+with driver.session() as session:
+    result = session.run(query_options[selected_query])
+    df = pd.DataFrame([dict(record) for record in result])
+    st.write(df)
