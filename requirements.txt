@@ -6,4 +6,4 @@ Pillow==9.4.0
 plotly==5.9.0
 plotly_express==0.4.1
 streamlit==1.19.0
-~treamlit==1.18.1
+streamlit==1.18.1
